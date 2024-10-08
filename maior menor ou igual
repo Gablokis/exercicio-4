@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de Números</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #CCCCCC;
+            text-align: center;
+            padding: 20px;
+        }
+        input[type="number"] {
+            width: 200px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background-color: #000066;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #000033;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            border: 1px solid #CCCCCC;
+            width: 250px;
+            height: 50px;
+            overflow: auto;
+            text-align: left;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Comparador de Números</h1>
+<input type="number" id="number1" placeholder="Digite o primeiro número" required>
+<input type="number" id="number2" placeholder="Digite o segundo número" required>
+<button onclick="compareNumbers()">Comparar</button>
+
+<div id="output"></div>
+
+<script>
+    function compareNumbers() {
+        const num1 = parseInt(document.getElementById("number1").value);
+        const num2 = parseInt(document.getElementById("number2").value);
+        const output = document.getElementById("output");
+
+        if (!isNaN(num1) && !isNaN(num2)) {
+            if (num1 > num2) {
+                output.innerHTML = `${num1} é maior que ${num2}.`;
+            } else if (num1 < num2) {
+                output.innerHTML = `${num2} é maior que ${num1}.`;
+            } else {
+                output.innerHTML = `Os números são iguais.`;
+            }
+        } else {
+            output.innerHTML = "Por favor, insira números inteiros válidos.";
+        }
+    }
+</script>
+
+</body>
+</html>
