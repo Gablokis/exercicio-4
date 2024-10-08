@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Parcelas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #CCCCCC;
+            text-align: center;
+            padding: 20px;
+        }
+        input[type="number"] {
+            width: 200px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background-color: #000066;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #000033;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #000066;
+            color: #FFFFFF;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Calculadora de Parcelas</h1>
+<input type="number" id="totalValue" placeholder="Valor total da compra" required>
+<input type="number" id="installments" placeholder="Quantidade de parcelas" required>
+<button onclick="calculateInstallments()">Calcular Parcelas</button>
+
+<div id="output"></div>
+
+<script>
+    function calculateInstallments() {
+        const totalValue = parseFloat(document.getElementById("totalValue").value);
+        const installments = parseInt(document.getElementById("installments").value);
+        let interestRate = 0;
+
+      
+        if (installments <= 3) {
+            interestRate = 0; // Sem juros
+        } else if (installments <= 6) {
+            interestRate = 0.05; // 5% de juros
+        } else if (installments <= 12) {
+            interestRate = 0.10; // 10% de juros
+        } else {
+            interestRate = 0.15; // 15% de juros
+        }
+
+       
+        const totalWithInterest = totalValue * (1 + interestRate);
+        const installmentValue = totalWithInterest / installments;
+
+        const output = document.getElementById("output");
+        output.innerHTML = `
+            <strong>Valor de cada parcela:</strong> R$ ${installmentValue.toFixed(2)}<br>
+            <strong>Taxa de juros:</strong> ${(interestRate * 100).toFixed(0)}%
+        `;
+        output.style.display = "block";
+    }
+</script>
+
+</body>
+</html>
