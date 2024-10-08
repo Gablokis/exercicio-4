@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Preço do Produto</title>
+    <script>
+        function calcularValor() {
+            
+            const preco = parseFloat(document.getElementById('preco').value);
+            const pagamento = document.getElementById('pagamento').value;
+            let valorFinal;
+
+            switch (pagamento) {
+                case 'avista_dinheiro':
+                    valorFinal = preco * 0.9; 
+                    break;
+                case 'avista_cartao':
+                    valorFinal = preco * 0.95; 
+                    break;
+                case '2x_cartao':
+                    valorFinal = preco; 
+                    break;
+                case '3x_ou_mais':
+                    valorFinal = preco * 1.2; 
+                    break;
+                default:
+                    valorFinal = preco;
+            }
+
+          
+            document.getElementById('valor_real').value = `Valor real: R$ ${preco.toFixed(2)}`;
+            document.getElementById('valor_a_pagar').value = `Valor a pagar: R$ ${valorFinal.toFixed(2)}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Cálculo do Preço do Produto</h1>
+    <form onsubmit="event.preventDefault(); calcularValor();">
+        <label for="preco">Preço do Produto:</label>
+        <input type="number" step="0.01" id="preco" required>
+        <br>
+        <label for="pagamento">Condição de Pagamento:</label>
+        <select id="pagamento" required>
+            <option value="avista_dinheiro">À vista (dinheiro ou cartão) - 10% de desconto</option>
+            <option value="avista_cartao">À vista (cartão) - 5% de desconto</option>
+            <option value="2x_cartao">Em até 2x no cartão - preço normal</option>
+            <option value="3x_ou_mais">Em 3x ou mais no cartão - 20% de juros</option>
+        </select>
+        <br>
+        <button type="submit">Calcular Valor</button>
+    </form>
+    <h2>Resultado:</h2>
+    <input type="text" id="valor_real" readonly>
+    <br>
+    <input type="text" id="valor_a_pagar" readonly>
+</body>
+</html>
