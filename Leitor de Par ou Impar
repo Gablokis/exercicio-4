@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Par ou Ímpar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #CCCCCC;
+            text-align: center;
+            padding: 20px;
+        }
+        input[type="number"] {
+            width: 200px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background-color: #000066;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #000033;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            border: 1px solid #CCCCCC;
+            width: 200px;
+            height: 50px;
+            overflow: auto;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Verificador de Par ou Ímpar</h1>
+<input type="number" id="numberInput" placeholder="Digite um número inteiro" required>
+<button onclick="checkParity()">Verificar</button>
+
+<div id="output"></div>
+
+<script>
+    function checkParity() {
+        const number = parseInt(document.getElementById("numberInput").value);
+        const output = document.getElementById("output");
+
+        if (!isNaN(number)) {
+            if (number % 2 === 0) {
+                output.innerHTML = `${number} é um número <strong>par</strong>.`;
+            } else {
+                output.innerHTML = `${number} é um número <strong>ímpar</strong>.`;
+            }
+        } else {
+            output.innerHTML = "Por favor, insira um número inteiro válido.";
+        }
+    }
+</script>
+
+</body>
+</html>
