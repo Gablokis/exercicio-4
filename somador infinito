@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>somador infinito</title>
+    <script>
+function calcularSoma(n) {
+
+  if (isNaN(n) || n < 1) {
+    alert("Por favor, insira um número inteiro positivo.");
+    return;
+  }
+
+  let soma = n * (n + 1) / 2;
+
+  return soma;
+}
+
+function mostrarResultado() {
+
+  const numero = parseInt(document.getElementById("numero").value);
+
+ 
+  const resultado = calcularSoma(numero);
+
+   document.getElementById("resultado").value = resultado;
+}
+    </script>
+</head>
+<body>
+    HTML
+<input type="number" id="numero" placeholder="Digite um número">
+<button onclick="mostrarResultado()">Calcular Soma</button>
+<input type="text" id="resultado" disabled>
+</body>
+</html>
