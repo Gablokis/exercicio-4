@@ -1,0 +1,50 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            function jogar() {
+                
+    const numeroSecreto = Math.round(Math.random() * 100);
+    let tentativas = 0;
+
+    let chute = prompt("Digite um número entre 0 e 100:");
+
+    while (chute != numeroSecreto) {
+        tentativas++;
+
+        if (chute > numeroSecreto) {
+        chute = prompt("O número secreto é menor. Tente novamente:");
+        } else {
+        chute = prompt("O número secreto é maior. Tente novamente:");
+        }
+    }
+
+    alert(`Parabéns! Você acertou em ${tentativas} tentativas.`);
+
+    const jogarNovamente = confirm("Deseja jogar novamente?");
+    if (jogarNovamente) {
+        jogar();
+    }
+    }
+
+    jogar();
+        </script>
+    </head>
+    <body>
+    <input type="number" id="chute" placeholder="Digite seu chute">
+    <button onclick="verificarChute()">Chutar</button>
+    <p id="resultado"></p>
+
+    <script>
+    
+        function verificarChute() {
+        
+        }
+    </script>
+    </body>
+    </html>
+    </body>
+    </html>
